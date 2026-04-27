@@ -396,9 +396,135 @@
         @media (max-width: 640px) {
             .bento-grid { grid-template-columns: 1fr; }
         }
+        /* ── 滚动进度条 ── */
+#scroll-progress {
+    position: fixed; top: 0; left: 0; height: 2px; width: 0%;
+    background: linear-gradient(90deg, #7c3aed, #a855f7, #e879f9, #a855f7);
+    background-size: 200% 100%; z-index: 9999;
+    transition: width 0.1s linear;
+    animation: shimmer-bar 3s linear infinite;
+}
+@keyframes shimmer-bar {
+    0%   { background-position: 200% center; }
+    100% { background-position: -200% center; }
+}
+
+/* ── 粒子画布 ── */
+#particle-canvas {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none; z-index: 0; opacity: 0.6;
+}
+
+/* ── 鼠标光晕 ── */
+#cursor-glow {
+    position: fixed; width: 400px; height: 400px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(168,85,247,0.08) 0%, transparent 70%);
+    pointer-events: none; z-index: 1;
+    transform: translate(-50%, -50%); transition: opacity 0.3s ease;
+}
+
+/* ── 打字机光标 ── */
+.typewriter-cursor {
+    display: inline-block; width: 2px; height: 1em; background: #a855f7;
+    margin-left: 2px; vertical-align: middle;
+    animation: blink 1s step-end infinite;
+}
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+/* ── 滚动入场 ── */
+.reveal { opacity: 0; transform: translateY(40px);
+    transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1); }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.delay-100{transition-delay:0.1s} .delay-200{transition-delay:0.2s}
+.delay-300{transition-delay:0.3s} .delay-400{transition-delay:0.4s}
+
+/* ── 玻璃卡片悬浮光晕 ── */
+.glass-effect { position: relative; overflow: hidden;
+    transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s ease, border-color 0.4s ease !important; }
+.glass-effect::before {
+    content: ''; position: absolute; inset: 0; border-radius: inherit;
+    background: radial-gradient(circle at var(--mx,50%) var(--my,50%), rgba(168,85,247,0.12) 0%, transparent 60%);
+    opacity: 0; transition: opacity 0.4s ease; pointer-events: none; z-index: 0;
+}
+.glass-effect:hover::before { opacity: 1; }
+.glass-effect:hover {
+    transform: translateY(-4px) scale(1.01);
+    box-shadow: 0 20px 60px rgba(168,85,247,0.15), 0 0 0 1px rgba(168,85,247,0.2);
+    border-color: rgba(168,85,247,0.3) !important;
+}
+
+/* ── 导航链接下划线 ── */
+nav a { position: relative; }
+nav a::after { content:''; position:absolute; bottom:-2px; left:0; width:0; height:1px;
+    background:#a855f7; transition:width 0.3s ease; }
+nav a:hover::after { width:100%; }
+
+/* ── 浮动光球 ── */
+.orb { position:absolute; border-radius:50%; filter:blur(80px); pointer-events:none;
+    animation:orb-float 8s ease-in-out infinite; }
+.orb-1 { width:400px; height:400px;
+    background:radial-gradient(circle,rgba(124,58,237,0.15),transparent 70%);
+    top:10%; left:-10%; }
+.orb-2 { width:300px; height:300px;
+    background:radial-gradient(circle,rgba(236,72,153,0.1),transparent 70%);
+    top:60%; right:-5%; animation-delay:-3s; }
+.orb-3 { width:250px; height:250px;
+    background:radial-gradient(circle,rgba(168,85,247,0.12),transparent 70%);
+    bottom:20%; left:30%; animation-delay:-6s; }
+@keyframes orb-float {
+    0%,100%{transform:translate(0,0) scale(1)}
+    33%{transform:translate(20px,-30px) scale(1.05)}
+    66%{transform:translate(-15px,20px) scale(0.95)}
+}
+
+/* ── 页面加载动画 ── */
+#page-loader { position:fixed; inset:0; background:#000; z-index:99999;
+    display:flex; align-items:center; justify-content:center;
+    flex-direction:column; gap:20px;
+    transition:opacity 0.8s ease, visibility 0.8s ease; }
+#page-loader.hidden { opacity:0; visibility:hidden; }
+.loader-ring { width:60px; height:60px;
+    border:2px solid rgba(168,85,247,0.2); border-top-color:#a855f7;
+    border-radius:50%; animation:spin 1s linear infinite; }
+.loader-text { font-size:12px; letter-spacing:4px; color:rgba(168,85,247,0.6);
+    text-transform:uppercase; animation:pulse-text 1.5s ease-in-out infinite; }
+@keyframes spin { to{transform:rotate(360deg)} }
+@keyframes pulse-text { 0%,100%{opacity:0.4} 50%{opacity:1} }
+
+/* ── 滚动指示器 ── */
+#scroll-indicator { position:absolute; bottom:30px; left:50%; transform:translateX(-50%);
+    display:flex; flex-direction:column; align-items:center; gap:8px;
+    opacity:0.6; animation:fade-in-up 1s ease 2s both; z-index:10; }
+#scroll-indicator span { font-size:10px; letter-spacing:3px; text-transform:uppercase;
+    color:rgba(255,255,255,0.5); }
+.scroll-arrow { width:20px; height:20px;
+    border-right:1px solid rgba(168,85,247,0.6); border-bottom:1px solid rgba(168,85,247,0.6);
+    transform:rotate(45deg); animation:arrow-bounce 1.5s ease-in-out infinite; }
+@keyframes arrow-bounce {
+    0%,100%{transform:rotate(45deg) translateY(0);opacity:0.6}
+    50%{transform:rotate(45deg) translateY(6px);opacity:1}
+}
+@keyframes fade-in-up {
+    from{opacity:0;transform:translateX(-50%) translateY(20px)}
+    to{opacity:0.6;transform:translateX(-50%) translateY(0)}
+}
+
+/* ── 磁性按钮 ── */
+.magnetic-btn { transition:transform 0.3s cubic-bezier(0.16,1,0.3,1); will-change:transform; }
+
+/* ── 噪点纹理 ── */
+body::before { content:''; position:fixed; inset:0;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise )' opacity='1'/%3E%3C/svg%3E");
+    opacity:0.025; pointer-events:none; z-index:9998; }
+
     </style>
 </head>
 <body>
+    <div id="page-loader"><div class="loader-ring"></div><div class="loader-text">Loading</div></div>
+<div id="scroll-progress"></div>
+<canvas id="particle-canvas"></canvas>
+<div id="cursor-glow"></div>
+
 
     <!-- ============================================================
          导航栏 / Navigation
@@ -1454,5 +1580,60 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('panel-' + panelId).classList.add('active');
         }
     </script>
+    <script>
+(function(){
+    // 加载动画
+    var loader=document.getElementById('page-loader');
+    if(loader) window.addEventListener('load',function(){setTimeout(function(){loader.classList.add('hidden');setTimeout(function(){loader.style.display='none'},800)},600)});
+
+    // 进度条
+    var bar=document.getElementById('scroll-progress');
+    if(bar) window.addEventListener('scroll',function(){var s=window.scrollY,d=document.documentElement.scrollHeight-window.innerHeight;bar.style.width=(d>0?s/d*100:0)+'%'},{passive:true});
+
+    // 鼠标光晕
+    var glow=document.getElementById('cursor-glow');
+    if(glow){var mx=0,my=0,cx=0,cy=0;document.addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY});(function a(){cx+=(mx-cx)*0.08;cy+=(my-cy)*0.08;glow.style.left=cx+'px';glow.style.top=cy+'px';requestAnimationFrame(a)})()}
+
+    // 粒子系统
+    var canvas=document.getElementById('particle-canvas');
+    if(canvas){var ctx=canvas.getContext('2d'),W,H,pts=[],mouse={x:-9999,y:-9999};
+    function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight}
+    function Pt(){this.x=Math.random()*W;this.y=Math.random()*H;this.vx=(Math.random()-.5)*.3;this.vy=(Math.random()-.5)*.3;this.r=Math.random()*1.5+.5;this.a=Math.random()*.5+.2;this.h=Math.random()*60+260}
+    function init(){pts=[];for(var i=0;i<120;i++)pts.push(new Pt())}
+    function draw(){ctx.clearRect(0,0,W,H);for(var i=0;i<pts.length;i++){var p=pts[i],dx=p.x-mouse.x,dy=p.y-mouse.y,d=Math.sqrt(dx*dx+dy*dy);if(d<150){var f=(150-d)/150*.8;p.vx+=(dx/d)*f*.3;p.vy+=(dy/d)*f*.3}p.vx*=.98;p.vy*=.98;p.x+=p.vx;p.y+=p.vy;if(p.x<0)p.x=W;if(p.x>W)p.x=0;if(p.y<0)p.y=H;if(p.y>H)p.y=0;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle='hsla('+p.h+',80%,70%,'+p.a+')';ctx.fill();for(var j=i+1;j<pts.length;j++){var q=pts[j],ex=p.x-q.x,ey=p.y-q.y,ed=Math.sqrt(ex*ex+ey*ey);if(ed<120){ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(q.x,q.y);ctx.strokeStyle='rgba(168,85,247,'+(1-ed/120)*.15+')';ctx.lineWidth=.5;ctx.stroke()}}}requestAnimationFrame(draw)}
+    window.addEventListener('resize',function(){resize();init()},{passive:true});
+    document.addEventListener('mousemove',function(e){mouse.x=e.clientX;mouse.y=e.clientY});
+    resize();init();draw()}
+
+    // 滚动入场
+    var revEls=document.querySelectorAll('.reveal');
+    if(revEls.length&&window.IntersectionObserver){var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})},{threshold:0.12,rootMargin:'0px 0px -40px 0px'});revEls.forEach(function(el){obs.observe(el)})}
+
+    // 卡片光晕
+    document.querySelectorAll('.glass-effect').forEach(function(card){card.addEventListener('mousemove',function(e){var r=card.getBoundingClientRect();card.style.setProperty('--mx',((e.clientX-r.left)/r.width*100)+'%');card.style.setProperty('--my',((e.clientY-r.top)/r.height*100)+'%')})});
+
+    // 打字机
+    document.querySelectorAll('[data-typewriter]').forEach(function(el){var text=el.getAttribute('data-typewriter'),delay=parseInt(el.getAttribute('data-tw-delay')||0);el.textContent='';var cur=document.createElement('span');cur.className='typewriter-cursor';el.appendChild(cur);var i=0;setTimeout(function t(){if(i<text.length){el.insertBefore(document.createTextNode(text[i]),cur);i++;setTimeout(t,60+Math.random()*40)}},delay)});
+
+    // Hero 视差
+    var hero=document.querySelector('.hero-section');
+    if(hero) window.addEventListener('scroll',function(){var s=window.scrollY;if(s<window.innerHeight)hero.style.backgroundPositionY=(50+s*.15)+'%'},{passive:true});
+
+    // 导航栏
+    var nav=document.querySelector('nav');
+    if(nav) window.addEventListener('scroll',function(){nav.style.background=window.scrollY>80?'rgba(0,0,0,0.85)':'rgba(0,0,0,0.2)'},{passive:true});
+
+    // 浮动光球
+    document.querySelectorAll('section').forEach(function(sec,i){if(i%2===0){var orb=document.createElement('div');orb.className='orb orb-'+((i%3)+1);orb.style.position='absolute';sec.style.position=sec.style.position||'relative';sec.appendChild(orb)}});
+
+    // 自动加 reveal 类
+    document.querySelectorAll('section h2').forEach(function(el){el.classList.add('reveal')});
+    document.querySelectorAll('.glass-effect').forEach(function(el,i){el.classList.add('reveal');if(i%3===1)el.classList.add('delay-100');if(i%3===2)el.classList.add('delay-200')});
+
+    // 磁性按钮
+    document.querySelectorAll('.magnetic-btn').forEach(function(btn){btn.addEventListener('mousemove',function(e){var r=btn.getBoundingClientRect(),dx=(e.clientX-r.left-r.width/2)*.3,dy=(e.clientY-r.top-r.height/2)*.3;btn.style.transform='translate('+dx+'px,'+dy+'px)'});btn.addEventListener('mouseleave',function(){btn.style.transform=''})});
+})();
+</script>
+
 </body>
 </html>

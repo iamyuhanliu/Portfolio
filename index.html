@@ -1605,6 +1605,10 @@ document.addEventListener('DOMContentLoaded', function() {
     document.addEventListener('mousemove',function(e){mouse.x=e.clientX;mouse.y=e.clientY});
     resize();init();draw()}
 
+    // 自动加 reveal 类
+    document.querySelectorAll('section h2').forEach(function(el){el.classList.add('reveal')});
+    document.querySelectorAll('.glass-effect').forEach(function(el,i){el.classList.add('reveal');if(i%3===1)el.classList.add('delay-100');if(i%3===2)el.classList.add('delay-200')});
+
     // 滚动入场
     var revEls=document.querySelectorAll('.reveal');
     if(revEls.length&&window.IntersectionObserver){var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})},{threshold:0.12,rootMargin:'0px 0px -40px 0px'});revEls.forEach(function(el){obs.observe(el)})}
@@ -1626,10 +1630,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // 浮动光球
     document.querySelectorAll('section').forEach(function(sec,i){if(i%2===0){var orb=document.createElement('div');orb.className='orb orb-'+((i%3)+1);orb.style.position='absolute';sec.style.position=sec.style.position||'relative';sec.appendChild(orb)}});
 
-    // 自动加 reveal 类
-    document.querySelectorAll('section h2').forEach(function(el){el.classList.add('reveal')});
-    document.querySelectorAll('.glass-effect').forEach(function(el,i){el.classList.add('reveal');if(i%3===1)el.classList.add('delay-100');if(i%3===2)el.classList.add('delay-200')});
-
+    
     // 磁性按钮
     document.querySelectorAll('.magnetic-btn').forEach(function(btn){btn.addEventListener('mousemove',function(e){var r=btn.getBoundingClientRect(),dx=(e.clientX-r.left-r.width/2)*.3,dy=(e.clientY-r.top-r.height/2)*.3;btn.style.transform='translate('+dx+'px,'+dy+'px)'});btn.addEventListener('mouseleave',function(){btn.style.transform=''})});
 })();

@@ -495,7 +495,7 @@ nav a:hover::after { width:100%; }
 #page-loader { position:fixed; inset:0; background:#000; z-index:99999;
     display:flex; align-items:center; justify-content:center;
     flex-direction:column; gap:20px;
-    transition:opacity 0.8s ease, visibility 0.8s ease; }
+    transition:opacity 0.35s ease, visibility 0.35s ease; }
 #page-loader.hidden { opacity:0; visibility:hidden; }
 .loader-ring { width:60px; height:60px;
     border:2px solid rgba(168,85,247,0.2); border-top-color:#a855f7;
@@ -1637,7 +1637,17 @@ document.addEventListener('DOMContentLoaded', function() {
 (function(){
     // 加载动画
     var loader=document.getElementById('page-loader');
-    if(loader) window.addEventListener('load',function(){setTimeout(function(){loader.classList.add('hidden');setTimeout(function(){loader.style.display='none'},800)},600)});
+    if(loader){
+        var hideLoader=function(){
+            if(loader.dataset.done) return; loader.dataset.done='1';
+            loader.classList.add('hidden');
+            setTimeout(function(){loader.style.display='none'},350);
+        };
+        // DOM 一解析完就收起，不等 16MB 内嵌图片全部解码
+        if(document.readyState!=='loading') hideLoader();
+        else document.addEventListener('DOMContentLoaded',hideLoader);
+        setTimeout(hideLoader,1200); // 兜底：最长 1.2s
+    }
 
     // 进度条
     var bar=document.getElementById('scroll-progress');

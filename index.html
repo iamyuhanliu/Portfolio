@@ -531,6 +531,60 @@ body::before { content:''; position:fixed; inset:0;
     background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise )' opacity='1'/%3E%3C/svg%3E");
     opacity:0.025; pointer-events:none; z-index:9998; }
 
+/* ── 社媒作品：手机外框截图 ── */
+.social-stat { padding: 20px 16px; text-align: center; }
+.social-stat-num { font-size: 28px; font-weight: 700; color: #c084fc; line-height: 1.1; }
+.social-stat-label { margin-top: 6px; font-size: 12px; color: #9ca3af; }
+.social-panel { display: none; }
+.social-panel.active { display: block; }
+/* 用 flex 而不是 grid：最后一行不满时居中 */
+.social-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 2.5rem 1.5rem; }
+.social-card { flex: 0 0 calc((100% - 4.5rem) / 4); margin: 0; cursor: zoom-in; }
+.phone {
+    position: relative; max-width: 250px; margin: 0 auto; padding: 9px; border-radius: 42px;
+    background: linear-gradient(145deg, #2c2c31, #0b0b0d);
+    box-shadow: 0 0 0 1px rgba(255,255,255,0.14), inset 0 0 0 1px rgba(255,255,255,0.05), 0 24px 50px rgba(0,0,0,0.6);
+    transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s ease;
+}
+/* 灵动岛 */
+.phone::before {
+    content: ''; position: absolute; z-index: 2; top: 17px; left: 50%; transform: translateX(-50%);
+    width: 30%; height: 18px; border-radius: 12px; background: #000;
+}
+/* 侧边电源键 */
+.phone::after {
+    content: ''; position: absolute; right: -3px; top: 24%; width: 3px; height: 11%;
+    border-radius: 0 2px 2px 0; background: #2c2c31;
+}
+.phone-screen { border-radius: 33px; overflow: hidden; aspect-ratio: 390 / 844; background: #000; }
+.phone-screen img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
+.social-card:hover .phone {
+    transform: translateY(-6px);
+    box-shadow: 0 0 0 1px rgba(168,85,247,0.55), 0 0 30px rgba(168,85,247,0.25), 0 24px 50px rgba(0,0,0,0.6);
+}
+.social-card figcaption { max-width: 250px; margin: 14px auto 0; }
+.social-title {
+    font-size: 13px; line-height: 1.45; color: #e5e7eb;
+    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+.social-meta { margin-top: 6px; display: flex; flex-wrap: wrap; gap: 4px 12px; font-size: 12px; color: #9ca3af; }
+.social-meta > span { display: inline-flex; align-items: center; gap: 4px; }
+.social-meta svg { width: 12px; height: 12px; color: #c084fc; }
+/* 放大查看 */
+.shot-view { min-height: 100%; display: flex; align-items: center; justify-content: center; padding: 60px 16px; }
+.shot-view .phone { width: min(380px, 86vw, calc((100vh - 140px) * 390 / 844)); max-width: none; cursor: default; }
+@media (max-width: 1024px) {
+    .social-card { flex-basis: calc((100% - 3rem) / 3); }
+}
+@media (max-width: 640px) {
+    .social-grid { gap: 2rem 1rem; }
+    .social-card { flex-basis: calc((100% - 1rem) / 2); }
+    .social-stat-num { font-size: 22px; }
+    .phone { padding: 6px; border-radius: 28px; }
+    .phone::before { top: 11px; height: 12px; border-radius: 8px; }
+    .phone-screen { border-radius: 23px; }
+}
+
     </style>
 </head>
 <body>
@@ -556,12 +610,14 @@ body::before { content:''; position:fixed; inset:0;
                     <a href="#education"  class="lang-zh hover:text-white transition-colors">教育背景</a>
                     <a href="#experience" class="lang-zh hover:text-white transition-colors">工作经验</a>
                     <a href="#projects"   class="lang-zh hover:text-white transition-colors">项目作品</a>
+                    <a href="#social"     class="lang-zh hover:text-white transition-colors">社媒作品</a>
                     <a href="#otherside"  class="lang-zh hover:text-white transition-colors">不一样的我</a>
                     <!-- 英文导航 -->
                     <a href="#home"       class="lang-en hover:text-white transition-colors">Home</a>
                     <a href="#education"  class="lang-en hover:text-white transition-colors">Education</a>
                     <a href="#experience" class="lang-en hover:text-white transition-colors">Experience</a>
                     <a href="#projects"   class="lang-en hover:text-white transition-colors">Projects</a>
+                    <a href="#social"     class="lang-en hover:text-white transition-colors">Social Media</a>
                     <a href="#otherside"  class="lang-en hover:text-white transition-colors">The Other Side</a>
                 </div>
                 <button onclick="toggleLanguage()" class="lang-switch glass-effect px-3 py-1 text-xs font-bold rounded-full border-purple-500/50 text-purple-400">
@@ -1012,6 +1068,245 @@ body::before { content:''; position:fixed; inset:0;
                         <span class="lang-en">Click to See the Approach</span>
                         <svg class="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         社媒作品 / Social Media Section
+         ============================================================ -->
+    <section id="social" class="py-32 bg-black">
+        <div class="content-container">
+            <div class="flex items-center space-x-4 mb-12">
+                <div class="h-px flex-grow bg-white/10"></div>
+                <h2 class="text-4xl font-bold tracking-tighter">
+                    <span class="lang-zh">社媒作品</span>
+                    <span class="lang-en">Social Media</span>
+                </h2>
+                <div class="h-px flex-grow bg-white/10"></div>
+            </div>
+
+            <p class="text-gray-400 text-sm leading-relaxed text-center max-w-2xl mx-auto mb-10">
+                <span class="lang-zh">个人账号「不吃羽毛球」（抖音、小红书）和小红书小号「文刀球」的代表作品：抖音收录点赞过千的作品，小红书收录点赞过 200 的笔记。点击截图可放大查看。</span>
+                <span class="lang-en">Selected posts from my personal accounts: 不吃羽毛球 on Douyin (TikTok China) and Xiaohongshu (RED), plus my second Xiaohongshu account 文刀球. Douyin posts with 1,000+ likes and Xiaohongshu notes with 200+ likes are shown. Click a screenshot to enlarge it.</span>
+            </p>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-3">
+                <div class="glass-effect social-stat">
+                    <div class="social-stat-num"><span class="lang-zh">6万+</span><span class="lang-en">60K+</span></div>
+                    <div class="social-stat-label"><span class="lang-zh">抖音单条最高点赞</span><span class="lang-en">Likes on top Douyin post</span></div>
+                </div>
+                <div class="glass-effect social-stat">
+                    <div class="social-stat-num"><span class="lang-zh">209.8万</span><span class="lang-en">2.1M</span></div>
+                    <div class="social-stat-label"><span class="lang-zh">抖音单条最高播放</span><span class="lang-en">Views on top Douyin post</span></div>
+                </div>
+                <div class="glass-effect social-stat">
+                    <div class="social-stat-num">3,246</div>
+                    <div class="social-stat-label"><span class="lang-zh">小红书单篇最高点赞</span><span class="lang-en">Likes on top Xiaohongshu note</span></div>
+                </div>
+                <div class="glass-effect social-stat">
+                    <div class="social-stat-num">23</div>
+                    <div class="social-stat-label"><span class="lang-zh">入选作品</span><span class="lang-en">Posts featured</span></div>
+                </div>
+            </div>
+            <p class="text-xs text-gray-500 text-right mb-10">
+                <span class="lang-zh">*数据截至 2026/10/19</span>
+                <span class="lang-en">*Data as of 19 Oct 2026</span>
+            </p>
+
+            <!-- Tab Nav -->
+            <div class="flex flex-wrap justify-center gap-2 mb-12">
+                <button class="design-tab active" onclick="switchSocialTab(this, 'douyin')">
+                    <span class="lang-zh">抖音 · 不吃羽毛球（6）</span>
+                    <span class="lang-en">Douyin · 不吃羽毛球 (6)</span>
+                </button>
+                <button class="design-tab" onclick="switchSocialTab(this, 'xhs-main')">
+                    <span class="lang-zh">小红书 · 不吃羽毛球（12）</span>
+                    <span class="lang-en">Xiaohongshu · 不吃羽毛球 (12)</span>
+                </button>
+                <button class="design-tab" onclick="switchSocialTab(this, 'xhs-alt')">
+                    <span class="lang-zh">小红书小号 · 文刀球（5）</span>
+                    <span class="lang-en">Xiaohongshu 2nd account · 文刀球 (5)</span>
+                </button>
+            </div>
+
+            <!-- Panel 1: 抖音 -->
+            <div id="social-douyin" class="social-panel active">
+                <div class="social-grid">
+                        <figure class="social-card" onclick="openShot(this)">
+                            <div class="phone"><div class="phone-screen"><img src="social/dy-1.webp" alt="抖音：英留失恋vlog｜小姐姐为男人哭到心脉受损这辈子有了" loading="lazy"></div></div>
+                            <figcaption>
+                                <p class="social-title"><span class="lang-zh">英留失恋vlog｜小姐姐为男人哭到心脉受损这辈子有了</span><span class="lang-en">UK student breakup vlog: cried so hard over a guy that my heart hurt</span></p>
+                                <p class="social-meta"><span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.3 3 4.5 6.7 4.5c2.1 0 3.6 1.1 4.3 2.3h2c.7-1.2 2.2-2.3 4.3-2.3 3.7 0 5.8 3.8 4.3 7.3C19.5 16.4 12 21 12 21z"/></svg>60,504</span><span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg><span class="lang-zh">209.8万</span><span class="lang-en">2.1M</span></span><span>2026.04</span></p>
+                            </figcaption>
+                        </figure>
+                        <figure class="social-card" onclick="openShot(this)">
+                            <div class="phone"><div class="phone-screen"><img src="social/dy-2.webp" alt="抖音：分手前vs分手后，关系结束是抽筋剥皮的疼痛" loading="lazy"></div></div>
+                            <figcaption>
+                                <p class="social-title"><span class="lang-zh">分手前vs分手后，关系结束是抽筋剥皮的疼痛</span><span class="lang-en">Before vs after the breakup: when a relationship ends, it hurts to the bone</span></p>
+                                <p class="social-meta"><span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.3 3 4.5 6.7 4.5c2.1 0 3.6 1.1 4.3 2.3h2c.7-1.2 2.2-2.3 4.3-2.3 3.7 0 5.8 3.8 4.3 7.3C19.5 16.4 12 21 12 21z"/></svg>18,200</span><span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg><span class="lang-zh">38.1万</span><span class="lang-en">381K</span></span><span>2026.04</span></p>
+                            </figcaption>
+                        </figure>
+                        <figure class="social-card" onclick="openShot(this)">
+                            <div class="phone"><div class="phone-screen"><img src="social/dy-3.webp" alt="抖音：合法飙船！中国人在英国当上女船长了" loading="lazy"></div></div>
+                            <figcaption>
+                                <p class="social-title"><span class="lang-zh">合法飙船！中国人在英国当上女船长了</span><span class="lang-en">Legal speedboating: a Chinese woman becomes a boat captain in the UK</span></p>
+                                <p class="social-meta"><span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.3 3 4.5 6.7 4.5c2.1 0 3.6 1.1 4.3 2.3h2c.7-1.2 2.2-2.3 4.3-2.3 3.7 0 5.8 3.8 4.3 7.3C19.5 16.4 12 21 12 21z"/></svg>14,237</span><span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg><span class="lang-zh">11.4万</span><span class="lang-en">114K</span></span><span>2026.03</span></p>
+                            </figcaption>
+                        </figure>
+                        <figure class="social-card" onclick="openShot(this)">
+                            <div class="phone"><div class="phone-screen"><img src="social/dy-4.webp" alt="抖音：英国留子失恋vlog4️⃣｜墓地是个好学校" loading="lazy"></div></div>
+                            <figcaption>
+                                <p class="social-title"><span class="lang-zh">英国留子失恋vlog4️⃣｜墓地是个好学校</span><span class="lang-en">Breakup vlog #4: a cemetery makes a good classroom</span></p>
+                                <p class="social-meta"><span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.3 3 4.5 6.7 4.5c2.1 0 3.6 1.1 4.3 2.3h2c.7-1.2 2.2-2.3 4.3-2.3 3.7 0 5.8 3.8 4.3 7.3C19.5 16.4 12 21 12 21z"/></svg>6,177</span><span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg><span class="lang-zh">14.6万</span><span class="lang-en">146K</span></span><span>2026.04</span></p>
+                            </figcaption>
+                        </figure>
+                        <figure class="social-card" onclick="openShot(this)">
+                            <div class="phone"><div class="phone-screen"><img src="social/dy-5.webp" alt="抖音：英留失恋vlog2️⃣｜去伦敦新金融城吸收下财气" loading="lazy"></div></div>
+                            <figcaption>
+                                <p class="social-title"><span class="lang-zh">英留失恋vlog2️⃣｜去伦敦新金融城吸收下财气</span><span class="lang-en">Breakup vlog #2: soaking up some wealth in London&#x27;s new financial district</span></p>
+                                <p class="social-meta"><span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.3 3 4.5 6.7 4.5c2.1 0 3.6 1.1 4.3 2.3h2c.7-1.2 2.2-2.3 4.3-2.3 3.7 0 5.8 3.8 4.3 7.3C19.5 16.4 12 21 12 21z"/></svg>2,069</span><span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg><span class="lang-zh">13.0万</span><span class="lang-en">130K</span></span><span>2026.04</span></p>
+                            </figcaption>
+                        </figure>
+                        <figure class="social-card" onclick="openShot(this)">
+                            <div class="phone"><div class="phone-screen"><img src="social/dy-6.webp" alt="抖音：好邪门的走出失恋方法，但有效" loading="lazy"></div></div>
+                            <figcaption>
+                                <p class="social-title"><span class="lang-zh">好邪门的走出失恋方法，但有效</span><span class="lang-en">A strange but effective way to get over a breakup</span></p>
+                                <p class="social-meta"><span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.3 3 4.5 6.7 4.5c2.1 0 3.6 1.1 4.3 2.3h2c.7-1.2 2.2-2.3 4.3-2.3 3.7 0 5.8 3.8 4.3 7.3C19.5 16.4 12 21 12 21z"/></svg>1,865</span><span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg><span class="lang-zh">6.8万</span><span class="lang-en">68K</span></span><span>2026.05</span></p>
+                            </figcaption>
+                        </figure>
+                </div>
+            </div>
+
+            <!-- Panel 2: 小红书 · 不吃羽毛球 -->
+            <div id="social-xhs-main" class="social-panel">
+                <div class="social-grid">
+                        <figure class="social-card" onclick="openShot(this)">
+                            <div class="phone"><div class="phone-screen"><img src="social/xhs-1.webp" alt="小红书：OMG天真蓝与普通照相馆的区别" loading="lazy"></div></div>
+                            <figcaption>
+                                <p class="social-title"><span class="lang-zh">OMG天真蓝与普通照相馆的区别</span><span class="lang-en">OMG: ID photos from Tianzhenlan studio vs an ordinary photo studio</span></p>
+                                <p class="social-meta"><span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.3 3 4.5 6.7 4.5c2.1 0 3.6 1.1 4.3 2.3h2c.7-1.2 2.2-2.3 4.3-2.3 3.7 0 5.8 3.8 4.3 7.3C19.5 16.4 12 21 12 21z"/></svg>3,246</span><span>2021.05</span></p>
+                            </figcaption>
+                        </figure>
+                        <figure class="social-card" onclick="openShot(this)">
+                            <div class="phone"><div class="phone-screen"><img src="social/xhs-2.webp" alt="小红书：深圳2019秋季校运会" loading="lazy"></div></div>
+                            <figcaption>
+                                <p class="social-title"><span class="lang-zh">深圳2019秋季校运会</span><span class="lang-en">Shenzhen school sports day, autumn 2019</span></p>
+                                <p class="social-meta"><span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.3 3 4.5 6.7 4.5c2.1 0 3.6 1.1 4.3 2.3h2c.7-1.2 2.2-2.3 4.3-2.3 3.7 0 5.8 3.8 4.3 7.3C19.5 16.4 12 21 12 21z"/></svg>1,573</span><span>2020.04</span></p>
+                            </figcaption>
+                        </figure>
+                        <figure class="social-card" onclick="openShot(this)">
+                            <div class="phone"><div class="phone-screen"><img src="social/xhs-3.webp" alt="小红书：🇬🇧英国留子拼了命从国内带来的便宜货外套" loading="lazy"></div></div>
+                            <figcaption>
+                                <p class="social-title"><span class="lang-zh">🇬🇧英国留子拼了命从国内带来的便宜货外套</span><span class="lang-en">Budget jackets a UK student lugged all the way from China</span></p>
+                                <p class="social-meta"><span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.3 3 4.5 6.7 4.5c2.1 0 3.6 1.1 4.3 2.3h2c.7-1.2 2.2-2.3 4.3-2.3 3.7 0 5.8 3.8 4.3 7.3C19.5 16.4 12 21 12 21z"/></svg>1,096</span><span>2025.10</span></p>
+                            </figcaption>
+                        </figure>
+                        <figure class="social-card" onclick="openShot(this)">
+                            <div class="phone"><div class="phone-screen"><img src="social/xhs-4.webp" alt="小红书：🇬🇧我操！伦敦你是疯子…" loading="lazy"></div></div>
+                            <figcaption>
+                                <p class="social-title"><span class="lang-zh">🇬🇧我操！伦敦你是疯子…</span><span class="lang-en">OMG! London, you&#x27;re insane… (35°C edition)</span></p>
+                                <p class="social-meta"><span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.3 3 4.5 6.7 4.5c2.1 0 3.6 1.1 4.3 2.3h2c.7-1.2 2.2-2.3 4.3-2.3 3.7 0 5.8 3.8 4.3 7.3C19.5 16.4 12 21 12 21z"/></svg>475</span><span>2026.06</span></p>
+                            </figcaption>
+                        </figure>
+                        <figure class="social-card" onclick="openShot(this)">
+                            <div class="phone"><div class="phone-screen"><img src="social/xhs-5.webp" alt="小红书：动荡的20岁，不要输给那些下坠的瞬间" loading="lazy"></div></div>
+                            <figcaption>
+                                <p class="social-title"><span class="lang-zh">动荡的20岁，不要输给那些下坠的瞬间</span><span class="lang-en">Turbulent twenties: don&#x27;t lose to the moments that pull you down</span></p>
+                                <p class="social-meta"><span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.3 3 4.5 6.7 4.5c2.1 0 3.6 1.1 4.3 2.3h2c.7-1.2 2.2-2.3 4.3-2.3 3.7 0 5.8 3.8 4.3 7.3C19.5 16.4 12 21 12 21z"/></svg>399</span><span>2026.03</span></p>
+                            </figcaption>
+                        </figure>
+                        <figure class="social-card" onclick="openShot(this)">
+                            <div class="phone"><div class="phone-screen"><img src="social/xhs-6.webp" alt="小红书：我是母系家族养大的小孩，我很高兴我是女的" loading="lazy"></div></div>
+                            <figcaption>
+                                <p class="social-title"><span class="lang-zh">我是母系家族养大的小孩，我很高兴我是女的</span><span class="lang-en">Raised by the women of my family, and glad to be a woman</span></p>
+                                <p class="social-meta"><span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.3 3 4.5 6.7 4.5c2.1 0 3.6 1.1 4.3 2.3h2c.7-1.2 2.2-2.3 4.3-2.3 3.7 0 5.8 3.8 4.3 7.3C19.5 16.4 12 21 12 21z"/></svg>353</span><span>2026.03</span></p>
+                            </figcaption>
+                        </figure>
+                        <figure class="social-card" onclick="openShot(this)">
+                            <div class="phone"><div class="phone-screen"><img src="social/xhs-7.webp" alt="小红书：中戏毕业｜曾想大学转学的我，被女性温暖四年" loading="lazy"></div></div>
+                            <figcaption>
+                                <p class="social-title"><span class="lang-zh">中戏毕业｜曾想大学转学的我，被女性温暖四年</span><span class="lang-en">Graduating from the Central Academy of Drama: I once wanted to transfer, then women carried me through four years</span></p>
+                                <p class="social-meta"><span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.3 3 4.5 6.7 4.5c2.1 0 3.6 1.1 4.3 2.3h2c.7-1.2 2.2-2.3 4.3-2.3 3.7 0 5.8 3.8 4.3 7.3C19.5 16.4 12 21 12 21z"/></svg>341</span><span>2025.06</span></p>
+                            </figcaption>
+                        </figure>
+                        <figure class="social-card" onclick="openShot(this)">
+                            <div class="phone"><div class="phone-screen"><img src="social/xhs-8.webp" alt="小红书：泰晤士河合法飙船！在伦敦🇬🇧成为了女船长" loading="lazy"></div></div>
+                            <figcaption>
+                                <p class="social-title"><span class="lang-zh">泰晤士河合法飙船！在伦敦🇬🇧成为了女船长</span><span class="lang-en">Legally speeding on the Thames: I became a boat captain in London</span></p>
+                                <p class="social-meta"><span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.3 3 4.5 6.7 4.5c2.1 0 3.6 1.1 4.3 2.3h2c.7-1.2 2.2-2.3 4.3-2.3 3.7 0 5.8 3.8 4.3 7.3C19.5 16.4 12 21 12 21z"/></svg>305</span><span>2026.03</span></p>
+                            </figcaption>
+                        </figure>
+                        <figure class="social-card" onclick="openShot(this)">
+                            <div class="phone"><div class="phone-screen"><img src="social/xhs-9.webp" alt="小红书：🇬🇧Jaded London五条爆款神裤测评（小个子" loading="lazy"></div></div>
+                            <figcaption>
+                                <p class="social-title"><span class="lang-zh">🇬🇧Jaded London五条爆款神裤测评（小个子</span><span class="lang-en">Jaded London: reviewing five viral trousers (petite fit)</span></p>
+                                <p class="social-meta"><span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.3 3 4.5 6.7 4.5c2.1 0 3.6 1.1 4.3 2.3h2c.7-1.2 2.2-2.3 4.3-2.3 3.7 0 5.8 3.8 4.3 7.3C19.5 16.4 12 21 12 21z"/></svg>251</span><span>2025.12</span></p>
+                            </figcaption>
+                        </figure>
+                        <figure class="social-card" onclick="openShot(this)">
+                            <div class="phone"><div class="phone-screen"><img src="social/xhs-10.webp" alt="小红书：🇬🇧35度的今天，留子和一周前认识的闪婚了" loading="lazy"></div></div>
+                            <figcaption>
+                                <p class="social-title"><span class="lang-zh">🇬🇧35度的今天，留子和一周前认识的闪婚了</span><span class="lang-en">35°C in London, so I &quot;married&quot; something I met a week ago (a £16 fan)</span></p>
+                                <p class="social-meta"><span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.3 3 4.5 6.7 4.5c2.1 0 3.6 1.1 4.3 2.3h2c.7-1.2 2.2-2.3 4.3-2.3 3.7 0 5.8 3.8 4.3 7.3C19.5 16.4 12 21 12 21z"/></svg>232</span><span>2026.06</span></p>
+                            </figcaption>
+                        </figure>
+                        <figure class="social-card" onclick="openShot(this)">
+                            <div class="phone"><div class="phone-screen"><img src="social/xhs-11.webp" alt="小红书：女孩，如果你也在为情所困，墓地是个好学校" loading="lazy"></div></div>
+                            <figcaption>
+                                <p class="social-title"><span class="lang-zh">女孩，如果你也在为情所困，墓地是个好学校</span><span class="lang-en">If you&#x27;re heartbroken too, a cemetery makes a good classroom</span></p>
+                                <p class="social-meta"><span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.3 3 4.5 6.7 4.5c2.1 0 3.6 1.1 4.3 2.3h2c.7-1.2 2.2-2.3 4.3-2.3 3.7 0 5.8 3.8 4.3 7.3C19.5 16.4 12 21 12 21z"/></svg>213</span><span>2026.05</span></p>
+                            </figcaption>
+                        </figure>
+                        <figure class="social-card" onclick="openShot(this)">
+                            <div class="phone"><div class="phone-screen"><img src="social/xhs-12.webp" alt="小红书：可我觉得熬夜根本不是我们的错啊（很多时候" loading="lazy"></div></div>
+                            <figcaption>
+                                <p class="social-title"><span class="lang-zh">可我觉得熬夜根本不是我们的错啊（很多时候</span><span class="lang-en">Staying up late often isn&#x27;t really our fault</span></p>
+                                <p class="social-meta"><span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.3 3 4.5 6.7 4.5c2.1 0 3.6 1.1 4.3 2.3h2c.7-1.2 2.2-2.3 4.3-2.3 3.7 0 5.8 3.8 4.3 7.3C19.5 16.4 12 21 12 21z"/></svg>209</span><span>2026.03</span></p>
+                            </figcaption>
+                        </figure>
+                </div>
+            </div>
+
+            <!-- Panel 3: 小红书 · 文刀球 -->
+            <div id="social-xhs-alt" class="social-panel">
+                <div class="social-grid">
+                        <figure class="social-card" onclick="openShot(this)">
+                            <div class="phone"><div class="phone-screen"><img src="social/wd-1.webp" alt="小红书：🇬🇧一周收到700个like后，惨败的dating记录" loading="lazy"></div></div>
+                            <figcaption>
+                                <p class="social-title"><span class="lang-zh">🇬🇧一周收到700个like后，惨败的dating记录</span><span class="lang-en">700 likes in a week, then a dating disaster</span></p>
+                                <p class="social-meta"><span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.3 3 4.5 6.7 4.5c2.1 0 3.6 1.1 4.3 2.3h2c.7-1.2 2.2-2.3 4.3-2.3 3.7 0 5.8 3.8 4.3 7.3C19.5 16.4 12 21 12 21z"/></svg>529</span><span>2026.08</span></p>
+                            </figcaption>
+                        </figure>
+                        <figure class="social-card" onclick="openShot(this)">
+                            <div class="phone"><div class="phone-screen"><img src="social/wd-2.webp" alt="小红书：🇬🇧 初高中时，我总是为穿短裤感到羞耻" loading="lazy"></div></div>
+                            <figcaption>
+                                <p class="social-title"><span class="lang-zh">🇬🇧 初高中时，我总是为穿短裤感到羞耻</span><span class="lang-en">In secondary school, I was always ashamed to wear shorts</span></p>
+                                <p class="social-meta"><span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.3 3 4.5 6.7 4.5c2.1 0 3.6 1.1 4.3 2.3h2c.7-1.2 2.2-2.3 4.3-2.3 3.7 0 5.8 3.8 4.3 7.3C19.5 16.4 12 21 12 21z"/></svg>402</span><span>2026.07</span></p>
+                            </figcaption>
+                        </figure>
+                        <figure class="social-card" onclick="openShot(this)">
+                            <div class="phone"><div class="phone-screen"><img src="social/wd-3.webp" alt="小红书：🇬🇧 中国女人在东伦敦印巴社区的一年" loading="lazy"></div></div>
+                            <figcaption>
+                                <p class="social-title"><span class="lang-zh">🇬🇧 中国女人在东伦敦印巴社区的一年</span><span class="lang-en">A year as a Chinese woman in East London&#x27;s South Asian community</span></p>
+                                <p class="social-meta"><span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.3 3 4.5 6.7 4.5c2.1 0 3.6 1.1 4.3 2.3h2c.7-1.2 2.2-2.3 4.3-2.3 3.7 0 5.8 3.8 4.3 7.3C19.5 16.4 12 21 12 21z"/></svg>352</span><span>2026.08</span></p>
+                            </figcaption>
+                        </figure>
+                        <figure class="social-card" onclick="openShot(this)">
+                            <div class="phone"><div class="phone-screen"><img src="social/wd-4.webp" alt="小红书：🇬🇧 一天坐了10次伊丽莎白线的神经病" loading="lazy"></div></div>
+                            <figcaption>
+                                <p class="social-title"><span class="lang-zh">🇬🇧 一天坐了10次伊丽莎白线的神经病</span><span class="lang-en">The weirdo who rode the Elizabeth line 10 times in one day</span></p>
+                                <p class="social-meta"><span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.3 3 4.5 6.7 4.5c2.1 0 3.6 1.1 4.3 2.3h2c.7-1.2 2.2-2.3 4.3-2.3 3.7 0 5.8 3.8 4.3 7.3C19.5 16.4 12 21 12 21z"/></svg>261</span><span>2026.07</span></p>
+                            </figcaption>
+                        </figure>
+                        <figure class="social-card" onclick="openShot(this)">
+                            <div class="phone"><div class="phone-screen"><img src="social/wd-5.webp" alt="小红书：🇬🇧 psw租房之我是不可接触之贱民" loading="lazy"></div></div>
+                            <figcaption>
+                                <p class="social-title"><span class="lang-zh">🇬🇧 psw租房之我是不可接触之贱民</span><span class="lang-en">Renting on a post-study work visa: treated like an outcast</span></p>
+                                <p class="social-meta"><span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.3 3 4.5 6.7 4.5c2.1 0 3.6 1.1 4.3 2.3h2c.7-1.2 2.2-2.3 4.3-2.3 3.7 0 5.8 3.8 4.3 7.3C19.5 16.4 12 21 12 21z"/></svg>223</span><span>2026.08</span></p>
+                            </figcaption>
+                        </figure>
                 </div>
             </div>
         </div>
@@ -1615,6 +1910,16 @@ body::before { content:''; position:fixed; inset:0;
     </div>
 
     <!-- ============================================================
+         弹窗：社媒截图放大 / Modal: Social Screenshot
+         ============================================================ -->
+    <div id="social-modal" class="modal">
+        <span class="close-modal" onclick="closeModal('social')">&times;</span>
+        <div class="shot-view" onclick="if (event.target === this) closeModal('social')">
+            <div class="phone"><div class="phone-screen"><img id="social-modal-img" src="" alt=""></div></div>
+        </div>
+    </div>
+
+    <!-- ============================================================
          页脚 / Footer
          ============================================================ -->
     <footer class="py-20 bg-black border-t border-white/10 text-center">
@@ -1726,6 +2031,29 @@ document.addEventListener('DOMContentLoaded', function() {
             document.querySelectorAll('.design-panel').forEach(p => p.classList.remove('active'));
             document.getElementById('panel-' + panelId).classList.add('active');
         }
+
+        // ----------------------------------------------------------------
+        // 社媒作品 Tab 切换 + 截图放大
+        // ----------------------------------------------------------------
+        function switchSocialTab(btn, panelId) {
+            btn.closest('.flex').querySelectorAll('.design-tab').forEach(t => t.classList.remove('active'));
+            btn.classList.add('active');
+            document.querySelectorAll('.social-panel').forEach(p => p.classList.remove('active'));
+            document.getElementById('social-' + panelId).classList.add('active');
+        }
+
+        function openShot(card) {
+            const img = card.querySelector('img');
+            const big = document.getElementById('social-modal-img');
+            big.src = img.src;
+            big.alt = img.alt;
+            openModal('social');
+        }
+
+        document.addEventListener('keydown', function(e) {
+            const m = document.getElementById('social-modal');
+            if (e.key === 'Escape' && m && m.style.display === 'block') closeModal('social');
+        });
     </script>
     <script>
 (function(){

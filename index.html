@@ -558,6 +558,10 @@ body::before { content:''; position:fixed; inset:0;
 }
 .phone-screen { border-radius: 33px; overflow: hidden; aspect-ratio: 390 / 844; background: #000; }
 .phone-screen img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
+.phone-screen { background-size: cover; background-position: top; }
+/* 截图下载完再淡入，之前显示内嵌的模糊小图 */
+.social-card .phone-screen img { opacity: 0; transition: opacity 0.4s ease; }
+.social-card .phone-screen img.loaded { opacity: 1; }
 .social-card:hover .phone {
     transform: translateY(-6px);
     box-shadow: 0 0 0 1px rgba(168,85,247,0.55), 0 0 30px rgba(168,85,247,0.25), 0 24px 50px rgba(0,0,0,0.6);
@@ -1135,42 +1139,42 @@ body::before { content:''; position:fixed; inset:0;
             <div id="social-douyin" class="social-panel active">
                 <div class="social-grid">
                         <figure class="social-card" onclick="openShot(this)">
-                            <div class="phone"><div class="phone-screen"><img src="social/dy-1.webp" alt="抖音：英留失恋vlog｜小姐姐为男人哭到心脉受损这辈子有了" loading="lazy"></div></div>
+                            <div class="phone"><div class="phone-screen" style="background-image:url(data:image/webp;base64,UklGRoQBAABXRUJQVlA4IHgBAABwCACdASoYADQAPu1kq06ppaQiKA1RMB2JQBkC/MQn8+izQWzJTscA65kPfwTqLWudtAI1dHx22h2XM2q97T0pjaq27fPGcwJpGcwAAP76WtkNLYxMHskygKVu/2g94DLcDKLhZSIryS0Zdb5JRaEcr0PwasUxJZIdlfXJ13hsxCqN+vSSCRX8TP3HaNPe4Xles1H2jDlSDVbuRy9WT+XvVvyRYVGcof3ykMfdzHSIpC7mCWBy4nwpQZPtb4VMvliApcVa90T4jB2MOhvlNJOmCxiHmk2Z0GXSlIH4TmNkg1+GlyO4ulzNMa/vytsNXnEdGsvAhAsTydT40Z/+b7eIoEJ9MX2BDws5CgGmaKg+F2bCSfg/+H5GspaigQVwT4jKd/4UiiWIBIOjRR7fDz65QG1ME9BD3VEG3vsKTEhv/Pt5dCWbzTKv4+CAnmSNryu0xkpvg8NC+ZRBy5avPAznEM0pXDcVMMWaIs/hZXE2l6HbqzAAAAAA)"><img src="social/dy-1.webp" alt="抖音：英留失恋vlog｜小姐姐为男人哭到心脉受损这辈子有了" loading="eager" decoding="async" onload="this.classList.add('loaded')"></div></div>
                             <figcaption>
                                 <p class="social-title"><span class="lang-zh">英留失恋vlog｜小姐姐为男人哭到心脉受损这辈子有了</span><span class="lang-en">UK student breakup vlog: cried so hard over a guy that my heart hurt</span></p>
                                 <p class="social-meta"><span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.3 3 4.5 6.7 4.5c2.1 0 3.6 1.1 4.3 2.3h2c.7-1.2 2.2-2.3 4.3-2.3 3.7 0 5.8 3.8 4.3 7.3C19.5 16.4 12 21 12 21z"/></svg>60,504</span><span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg><span class="lang-zh">209.8万</span><span class="lang-en">2.1M</span></span><span>2026.04</span></p>
                             </figcaption>
                         </figure>
                         <figure class="social-card" onclick="openShot(this)">
-                            <div class="phone"><div class="phone-screen"><img src="social/dy-2.webp" alt="抖音：分手前vs分手后，关系结束是抽筋剥皮的疼痛" loading="lazy"></div></div>
+                            <div class="phone"><div class="phone-screen" style="background-image:url(data:image/webp;base64,UklGRkgBAABXRUJQVlA4IDwBAAAQBwCdASoYADQAPu1kqk2ppaQiKA6pMB2JYwDFzrrNiswsH1e6n2lHIZtoIFN7COZtRd2e2R1hY1MAypNauFSgAAD++mK+U/EsmRrGOuA1UfxqRACCIEW7h10NUZAoyPUMxmjRknFOGwcch+X3UFXDpTcuUcYJ5CBoHx+ptocoI0ykMNxcR1lIXrc6kRY0C5IWwtIzpD51E5k9B4SQ7CM2QRPbbXO6azzEdLaiyezf38ZrNTzfVm+wY48XIoFmTJpn5a3f6X76BZXMA04GoZJTpQCAUlo7HeZ003d4SWZukxMHjB3Qunm5leUrrl204b9QvRWu93JTkf1gq/z6Lver6mZNt9DmMQDfGRUiaCz4ct03V2VBUJmUCrEBprfeXr8YYp9de7+Pz+pNU5vEIHmtq1mUaQSjCB/KAAAA)"><img src="social/dy-2.webp" alt="抖音：分手前vs分手后，关系结束是抽筋剥皮的疼痛" loading="eager" decoding="async" onload="this.classList.add('loaded')"></div></div>
                             <figcaption>
                                 <p class="social-title"><span class="lang-zh">分手前vs分手后，关系结束是抽筋剥皮的疼痛</span><span class="lang-en">Before vs after the breakup: when a relationship ends, it hurts to the bone</span></p>
                                 <p class="social-meta"><span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.3 3 4.5 6.7 4.5c2.1 0 3.6 1.1 4.3 2.3h2c.7-1.2 2.2-2.3 4.3-2.3 3.7 0 5.8 3.8 4.3 7.3C19.5 16.4 12 21 12 21z"/></svg>18,200</span><span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg><span class="lang-zh">38.1万</span><span class="lang-en">381K</span></span><span>2026.04</span></p>
                             </figcaption>
                         </figure>
                         <figure class="social-card" onclick="openShot(this)">
-                            <div class="phone"><div class="phone-screen"><img src="social/dy-3.webp" alt="抖音：合法飙船！中国人在英国当上女船长了" loading="lazy"></div></div>
+                            <div class="phone"><div class="phone-screen" style="background-image:url(data:image/webp;base64,UklGRmQBAABXRUJQVlA4IFgBAABwCACdASoYADQAPu1mq08ppaOiLBqrMTAdiWMA0YW1satamvZzEAvQ997w7gnvDl2iS3aeK21ksIB2a4P5hmMVsEfkmCmYuF+zegCwAP7yIIJRZYeBTA0OOLPGFsjYTlhDhlrEm3r34jvtSWvefwX6mijUFnnBK+r3ac55WAhDnrHum3GBQJZk2bCMh5hEjSn5UZMuF957zZAbNPsE/fnxuXxxiAhN70K1t7bLzoKjCkdIpI30RKgW8IXQl3zFU7QeFjzoMr56GIXTLeOC/hGL5qDq+MpZIkujsyctcDz8mSlRCFOnxcU4BFmvFAVQ9VWA6k2/nXqsN9eLM40SFsf9hQWEd2brGlhFST5JHlk2ty1mcu/DEc7dZUMCALRuSMTkW9bDMOUi55MV1pPfHM7tfqgUNIiC4VldhWwVCVepFRH+VPq6LyW9uVIn9fWG0jwVjX78ra4AAA==)"><img src="social/dy-3.webp" alt="抖音：合法飙船！中国人在英国当上女船长了" loading="eager" decoding="async" onload="this.classList.add('loaded')"></div></div>
                             <figcaption>
                                 <p class="social-title"><span class="lang-zh">合法飙船！中国人在英国当上女船长了</span><span class="lang-en">Legal speedboating: a Chinese woman becomes a boat captain in the UK</span></p>
                                 <p class="social-meta"><span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.3 3 4.5 6.7 4.5c2.1 0 3.6 1.1 4.3 2.3h2c.7-1.2 2.2-2.3 4.3-2.3 3.7 0 5.8 3.8 4.3 7.3C19.5 16.4 12 21 12 21z"/></svg>14,237</span><span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg><span class="lang-zh">11.4万</span><span class="lang-en">114K</span></span><span>2026.03</span></p>
                             </figcaption>
                         </figure>
                         <figure class="social-card" onclick="openShot(this)">
-                            <div class="phone"><div class="phone-screen"><img src="social/dy-4.webp" alt="抖音：英国留子失恋vlog4️⃣｜墓地是个好学校" loading="lazy"></div></div>
+                            <div class="phone"><div class="phone-screen" style="background-image:url(data:image/webp;base64,UklGRkIBAABXRUJQVlA4IDYBAAAwBwCdASoYADQAPu1grFAppSQirBVcyTAdiUAZm8QAdqAH2srUMH9dGhofafKCfU3GIeWdr1uyPV/8/JCzvqxxVCAA/vm87RXhb++HEputm4RTHvGgX0930PvYzjSUC9zUrBOdrc3Vbynu+n5nfPAriAQkfUGXi8UzMGYER0sPV+f82ZCdBkCTYWsGUZoRPCmzdBzQ+wLSNOQ3erzwYkL84rycwnLtAoy3FLaJfFfgZBodaHsDygSpOXuBNYchPZqTu3j7uFwS1A/p33Yb1tpjPnnH6pJWUnPN9boczK69TEQQ1imXsRsOF5PZ8cUCu86qDAlwjZZEe5JPvB5YLdW0uhy2vWRrLjbmGmlWdOjVKsGr1t2tweaNtYLsVMkszw71vW7t+jzEJVqOFfKvOACNrRcCAAAA)"><img src="social/dy-4.webp" alt="抖音：英国留子失恋vlog4️⃣｜墓地是个好学校" loading="eager" decoding="async" onload="this.classList.add('loaded')"></div></div>
                             <figcaption>
                                 <p class="social-title"><span class="lang-zh">英国留子失恋vlog4️⃣｜墓地是个好学校</span><span class="lang-en">Breakup vlog #4: a cemetery makes a good classroom</span></p>
                                 <p class="social-meta"><span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.3 3 4.5 6.7 4.5c2.1 0 3.6 1.1 4.3 2.3h2c.7-1.2 2.2-2.3 4.3-2.3 3.7 0 5.8 3.8 4.3 7.3C19.5 16.4 12 21 12 21z"/></svg>6,177</span><span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg><span class="lang-zh">14.6万</span><span class="lang-en">146K</span></span><span>2026.04</span></p>
                             </figcaption>
                         </figure>
                         <figure class="social-card" onclick="openShot(this)">
-                            <div class="phone"><div class="phone-screen"><img src="social/dy-5.webp" alt="抖音：英留失恋vlog2️⃣｜去伦敦新金融城吸收下财气" loading="lazy"></div></div>
+                            <div class="phone"><div class="phone-screen" style="background-image:url(data:image/webp;base64,UklGRmQBAABXRUJQVlA4IFgBAABQBwCdASoYADQAPu1orE4ppiSiKA1RMB2JYwDIId0Vgd5QAqMXfETdpmMD+wKjStrC7scUK14GJI/GejJzdmJTRlegAP75vPLm61natZIcN13F2j5D/D4D5zCBMeHAJVz1kQ4VLVxXo6pHPdEX08zBFxjCuXYFz0FnO8/Ext3RMK2qRa391UqgChg9xTmjmKgklLlMXj4YsKkqq7mFNeplePs/upGjsFecTz0KtC0u6SinGidnif0TnpvrIp0zKacOdqpcPvYgs/0bjKitRew4afHiAsZ/9eqEpq8vjE8AYJxe0zyq5nHW85GbX7e8l7p9UFh8Sty+JHQiyhsFizzRbUjh4TtHBeO0+MX6TZrovRZGs7lp26JUUxO4S5WwMV456jHkNfgOY5NwNfraUuFHucF1ACnO49+P/qQLLt3984+HT1+Jv0Nds2M4zZeYruZZBHttAAAAAA==)"><img src="social/dy-5.webp" alt="抖音：英留失恋vlog2️⃣｜去伦敦新金融城吸收下财气" loading="eager" decoding="async" onload="this.classList.add('loaded')"></div></div>
                             <figcaption>
                                 <p class="social-title"><span class="lang-zh">英留失恋vlog2️⃣｜去伦敦新金融城吸收下财气</span><span class="lang-en">Breakup vlog #2: soaking up some wealth in London&#x27;s new financial district</span></p>
                                 <p class="social-meta"><span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.3 3 4.5 6.7 4.5c2.1 0 3.6 1.1 4.3 2.3h2c.7-1.2 2.2-2.3 4.3-2.3 3.7 0 5.8 3.8 4.3 7.3C19.5 16.4 12 21 12 21z"/></svg>2,069</span><span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg><span class="lang-zh">13.0万</span><span class="lang-en">130K</span></span><span>2026.04</span></p>
                             </figcaption>
                         </figure>
                         <figure class="social-card" onclick="openShot(this)">
-                            <div class="phone"><div class="phone-screen"><img src="social/dy-6.webp" alt="抖音：好邪门的走出失恋方法，但有效" loading="lazy"></div></div>
+                            <div class="phone"><div class="phone-screen" style="background-image:url(data:image/webp;base64,UklGRpQBAABXRUJQVlA4IIgBAACwCACdASoYADQAPu1kq06ppSOiMBQMATAdiWwAzDWgMKqUvmoDcA0lLP57+s5Iz2LlwvCNmRa9uqtWi1IcjFdwDPTzpoXyQIax+o+q6gAA/vpa1+x4WzUJe1UGXz7MzXK9x3iMPObLex1qFrfJmp6GU+yi/3Oy727fJ/RhnFpRLJC+Nqi9jxVeqemImYTQXjjdWsjQ+v/1++MjuPVfkIsfbLX3bmmgo22jnLEvU0qG8UwhF6H2AEsraTQ23QFpK+7mwXWnGSm8VvNxYNoQA5zLGX6X+dWBh2aTtZuHiI6DD8UC+f6/Y5oOHLrlluNP5z0B0n8LKuahJuIpsdO+Y1TUcXSKkuSH0IHj5aYbq3XfLXxu+Xa9xqIZIVqqKz8rZTJOapL31mgod54g636zYDIWqdhkNySHFllh9xaa1Fu2pcs6HpTomr2hIwJM/MdcdPbtVwMxlGJKVD52vkd45RMfnlAjAp+rDRQPrEvdxSmrYaTBdeI6igU532yos7V8R576KLN0yT0AAA==)"><img src="social/dy-6.webp" alt="抖音：好邪门的走出失恋方法，但有效" loading="eager" decoding="async" onload="this.classList.add('loaded')"></div></div>
                             <figcaption>
                                 <p class="social-title"><span class="lang-zh">好邪门的走出失恋方法，但有效</span><span class="lang-en">A strange but effective way to get over a breakup</span></p>
                                 <p class="social-meta"><span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.3 3 4.5 6.7 4.5c2.1 0 3.6 1.1 4.3 2.3h2c.7-1.2 2.2-2.3 4.3-2.3 3.7 0 5.8 3.8 4.3 7.3C19.5 16.4 12 21 12 21z"/></svg>1,865</span><span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg><span class="lang-zh">6.8万</span><span class="lang-en">68K</span></span><span>2026.05</span></p>
@@ -1183,84 +1187,84 @@ body::before { content:''; position:fixed; inset:0;
             <div id="social-xhs-main" class="social-panel">
                 <div class="social-grid">
                         <figure class="social-card" onclick="openShot(this)">
-                            <div class="phone"><div class="phone-screen"><img src="social/xhs-1.webp" alt="小红书：OMG天真蓝与普通照相馆的区别" loading="lazy"></div></div>
+                            <div class="phone"><div class="phone-screen" style="background-image:url(data:image/webp;base64,UklGRhYBAABXRUJQVlA4IAoBAAAQBgCdASoYADQAPuVeqU2pJSQiMBgN+SAciWUAx+WNDVgWHS+j9pqtZcJtq8zQv+P1NWuWMiCJcAAA/vBwGfvS/OPsvddEV0RMsqUznb+WbgkH6id5HBn4ByjObmbsqL97SZTjn5ADQOcjF6WuXEYO6Gorv7IpdGvE73AguNIIh7j+6/UFkjIsrasHDO83dy+RLP/OH7fsoq09ErGiWtsw++4tOBIxJG1DPAuK49hBMKzvRmIn5E9auWY3AWw/mL8vbLRo7xm8aBKE2rrkIPNhZOAN8m+cz4GAv3ofYsW5M6I4DSUMbyZkWQw0YAgm6HDLE1f+TNCWuU7OUM15zZjxRxszkf0gCOzAAA==)"><img src="social/xhs-1.webp" alt="小红书：OMG天真蓝与普通照相馆的区别" loading="lazy" decoding="async" onload="this.classList.add('loaded')"></div></div>
                             <figcaption>
                                 <p class="social-title"><span class="lang-zh">OMG天真蓝与普通照相馆的区别</span><span class="lang-en">OMG: ID photos from Tianzhenlan studio vs an ordinary photo studio</span></p>
                                 <p class="social-meta"><span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.3 3 4.5 6.7 4.5c2.1 0 3.6 1.1 4.3 2.3h2c.7-1.2 2.2-2.3 4.3-2.3 3.7 0 5.8 3.8 4.3 7.3C19.5 16.4 12 21 12 21z"/></svg>3,246</span><span>2021.05</span></p>
                             </figcaption>
                         </figure>
                         <figure class="social-card" onclick="openShot(this)">
-                            <div class="phone"><div class="phone-screen"><img src="social/xhs-2.webp" alt="小红书：深圳2019秋季校运会" loading="lazy"></div></div>
+                            <div class="phone"><div class="phone-screen" style="background-image:url(data:image/webp;base64,UklGRkABAABXRUJQVlA4IDQBAADQBwCdASoYADQAPu1oqk8ppiOiLBqrMTAdiWcAy+W1cYFaCgU9+ZB/8Pwho8rM9csjW7RTpiQtT78/mDWmJEbk9JnYsWJOAAD+83RTeUqcCxfTP1p3DN8Pfe5xRX06iLbzupg6HziG7KpXZK+rXUgerhgbt/PkpkgDmZ8kHX+7uBys2hwMEn5tgssq5ryRXzPi2EmOPA4K9tE3Flkyt1aj/p2W/2Uw6UcuE7N5G2A113mYP9KYRwJwc6kfASwrCYZaXywxTSIYUMRMT7GvKFlY7W3x3QIb93Atw4U7jTvUhaKVXAAsom2rk6TFjItGQCfI8ItjFr4woRHVUK10mu7cXoyoMHwHd7QgXkA6schl9D69D050Sa32AT2yop5HBU/+Uk4lmwR3uHcJPUWh2rr4M4AAAA==)"><img src="social/xhs-2.webp" alt="小红书：深圳2019秋季校运会" loading="lazy" decoding="async" onload="this.classList.add('loaded')"></div></div>
                             <figcaption>
                                 <p class="social-title"><span class="lang-zh">深圳2019秋季校运会</span><span class="lang-en">Shenzhen school sports day, autumn 2019</span></p>
                                 <p class="social-meta"><span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.3 3 4.5 6.7 4.5c2.1 0 3.6 1.1 4.3 2.3h2c.7-1.2 2.2-2.3 4.3-2.3 3.7 0 5.8 3.8 4.3 7.3C19.5 16.4 12 21 12 21z"/></svg>1,573</span><span>2020.04</span></p>
                             </figcaption>
                         </figure>
                         <figure class="social-card" onclick="openShot(this)">
-                            <div class="phone"><div class="phone-screen"><img src="social/xhs-3.webp" alt="小红书：🇬🇧英国留子拼了命从国内带来的便宜货外套" loading="lazy"></div></div>
+                            <div class="phone"><div class="phone-screen" style="background-image:url(data:image/webp;base64,UklGRoIBAABXRUJQVlA4IHYBAADwBwCdASoYADQAPu1oqlCppaOiqAwBMB2JZwALAzcL0rLQAQoG4sPXcqLVsC/jWh1LUPQwgCCoJXueMQ1pl27Hednt2tDQk0QA/uHPJ/WZyf96dENItXvY8iWYnftC0PX7l01LqvGslB58oUmt1VABfwcFUkXJ/+w0HRe4tjep8h24Zkhztct/FSS95MmetACh9C31Eu4iglIkkM0vyIX+unsuAxTwN/6HQKE7qXjy1PZZoEch0lqRPZRkgjoxV2Tmob5nPkpSlICl4/khLS9ENy0mSokOhpDmU09SlG7fsU8j72Z+xEiepNS3fByaR2bUWtRY5UU6VY5HoPNqrKROUiJPEjKNuKyfXDdcyJm2qQxaWGrZTFQApmp6dqEJ7d5PmxNZYGAf0YYSn+rtWQQbFQsNrnHdV8cmFdvR2ZOaXTRdEaYciCLnsrnLaZLRXsI0oNHpLpI3PGC4Nh8KuUy935PhPrMZS9mzAyWeyZkBnmh6EAAAAA==)"><img src="social/xhs-3.webp" alt="小红书：🇬🇧英国留子拼了命从国内带来的便宜货外套" loading="lazy" decoding="async" onload="this.classList.add('loaded')"></div></div>
                             <figcaption>
                                 <p class="social-title"><span class="lang-zh">🇬🇧英国留子拼了命从国内带来的便宜货外套</span><span class="lang-en">Budget jackets a UK student lugged all the way from China</span></p>
                                 <p class="social-meta"><span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.3 3 4.5 6.7 4.5c2.1 0 3.6 1.1 4.3 2.3h2c.7-1.2 2.2-2.3 4.3-2.3 3.7 0 5.8 3.8 4.3 7.3C19.5 16.4 12 21 12 21z"/></svg>1,096</span><span>2025.10</span></p>
                             </figcaption>
                         </figure>
                         <figure class="social-card" onclick="openShot(this)">
-                            <div class="phone"><div class="phone-screen"><img src="social/xhs-4.webp" alt="小红书：🇬🇧我操！伦敦你是疯子…" loading="lazy"></div></div>
+                            <div class="phone"><div class="phone-screen" style="background-image:url(data:image/webp;base64,UklGRhABAABXRUJQVlA4IAQBAAAQBwCdASoYADQAPu1oqE6ppiOiLBqsyTAdiWcAxN9/oMHK8rtjt3CAsR+kdwQrr6NWqugNYdnVTJGvS/t9kV5xEAD+6ttgx1i3zfjnC2LvHJAwmV0UeYvhvUc7SUF9FGsPJkjkmlJevn/uQjYtt+fLRglRi8zju5eYyKTE8GPUINvJYN6C17v26ZW9ljCkd6cGdO0uZ6f7NCeWNR95/cOzlJzqFzbJm8g2NNqsabuya4Cw1DqPORlHToVNZdTq34/whNdQuq8UMcK84ndSePfT8AynN96u4YTMqAIYx0swpPQA/b5YEE1NkZtZwbkfNezTeV6FuF6kgBkJ1C91dKizzlAAAA==)"><img src="social/xhs-4.webp" alt="小红书：🇬🇧我操！伦敦你是疯子…" loading="lazy" decoding="async" onload="this.classList.add('loaded')"></div></div>
                             <figcaption>
                                 <p class="social-title"><span class="lang-zh">🇬🇧我操！伦敦你是疯子…</span><span class="lang-en">OMG! London, you&#x27;re insane… (35°C edition)</span></p>
                                 <p class="social-meta"><span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.3 3 4.5 6.7 4.5c2.1 0 3.6 1.1 4.3 2.3h2c.7-1.2 2.2-2.3 4.3-2.3 3.7 0 5.8 3.8 4.3 7.3C19.5 16.4 12 21 12 21z"/></svg>475</span><span>2026.06</span></p>
                             </figcaption>
                         </figure>
                         <figure class="social-card" onclick="openShot(this)">
-                            <div class="phone"><div class="phone-screen"><img src="social/xhs-5.webp" alt="小红书：动荡的20岁，不要输给那些下坠的瞬间" loading="lazy"></div></div>
+                            <div class="phone"><div class="phone-screen" style="background-image:url(data:image/webp;base64,UklGRnYBAABXRUJQVlA4IGoBAAAQCACdASoYADQAPu1urVCppqQiqBgMATAdiWcAzywKxbwmaqwu+c0FnqDWraKZG6raq68HG0JxwvqFtRcG6lQkhi38Us3Xu6YAAP6enbNgU10zrJ22+yrbaR3pNyVkImykoKFtMmiloW2umXe5dkA/52Ohk5nXvBHeUFnLvFnmMoPb3G2a0B0UD+MC4ngbBy/ss7BX7lXJ8xCL8Zwz/mmrgu/TNlJuAt7Rjy2YYugL9mZVegPAQW1hmZSjQdZWap5ymJ+nTjVO1RJqzUHPLk1AWkpPu+jSDQAhOGK1Qp6TfXlI+R/QTcqS9eTybia6auAG4msItiEUUPBzCdY5C/kZXG5EvH3pvg6EZBwoUmRdtG1fMZOlEGcFuCP+fDhRjJ1XjbNv1rtmhgQEqerrfYIuwkqElTmkSUEJBN3zHsbYetN1SWoSRoihwrX4UH4+W2kvKbnDtLcDKgbiPvNDjQZ/FoSiui7iRXwAAA==)"><img src="social/xhs-5.webp" alt="小红书：动荡的20岁，不要输给那些下坠的瞬间" loading="lazy" decoding="async" onload="this.classList.add('loaded')"></div></div>
                             <figcaption>
                                 <p class="social-title"><span class="lang-zh">动荡的20岁，不要输给那些下坠的瞬间</span><span class="lang-en">Turbulent twenties: don&#x27;t lose to the moments that pull you down</span></p>
                                 <p class="social-meta"><span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.3 3 4.5 6.7 4.5c2.1 0 3.6 1.1 4.3 2.3h2c.7-1.2 2.2-2.3 4.3-2.3 3.7 0 5.8 3.8 4.3 7.3C19.5 16.4 12 21 12 21z"/></svg>399</span><span>2026.03</span></p>
                             </figcaption>
                         </figure>
                         <figure class="social-card" onclick="openShot(this)">
-                            <div class="phone"><div class="phone-screen"><img src="social/xhs-6.webp" alt="小红书：我是母系家族养大的小孩，我很高兴我是女的" loading="lazy"></div></div>
+                            <div class="phone"><div class="phone-screen" style="background-image:url(data:image/webp;base64,UklGRjABAABXRUJQVlA4ICQBAACQBwCdASoYADQAPu1krVGppKQiqBgMATAdiWUAy+HcwYwf0Akq7ZtOMo3VB98eZTcNC30XLyFfoda43Phj/bIn/R465EAA/u6hV2kUxRWfBaF7tpaSqJa8ZfH+v+V2SRJfk7mQmK/8m5dHf4ANivPSm9iURsqIVXq7wAy/6UD0SuADU9QQgpilfcKOnEfH8b97T+Psl6eduSSCkri7s1t027w6cO6ezKM9O91scB/kyt/wBA83D2q/dCSBD/uvP/13LmIVPphs+9HaUbItxedSZ3a9wDgOb6AFdFd6izGV55EaR1o13mH3G8fJ6inTnBEdTksuOCBKqujAFU4v98DEeqPf4f+AXGteZMlNtpHXn3zKL/CGmEn1Cr/HeqLXvMC3igAA)"><img src="social/xhs-6.webp" alt="小红书：我是母系家族养大的小孩，我很高兴我是女的" loading="lazy" decoding="async" onload="this.classList.add('loaded')"></div></div>
                             <figcaption>
                                 <p class="social-title"><span class="lang-zh">我是母系家族养大的小孩，我很高兴我是女的</span><span class="lang-en">Raised by the women of my family, and glad to be a woman</span></p>
                                 <p class="social-meta"><span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.3 3 4.5 6.7 4.5c2.1 0 3.6 1.1 4.3 2.3h2c.7-1.2 2.2-2.3 4.3-2.3 3.7 0 5.8 3.8 4.3 7.3C19.5 16.4 12 21 12 21z"/></svg>353</span><span>2026.03</span></p>
                             </figcaption>
                         </figure>
                         <figure class="social-card" onclick="openShot(this)">
-                            <div class="phone"><div class="phone-screen"><img src="social/xhs-7.webp" alt="小红书：中戏毕业｜曾想大学转学的我，被女性温暖四年" loading="lazy"></div></div>
+                            <div class="phone"><div class="phone-screen" style="background-image:url(data:image/webp;base64,UklGRhwBAABXRUJQVlA4IBABAAAQCACdASoYADQAPuVepk2pJSOiM/maqSAciWQAx26tMKH/Zma81I1K0e9K6gq2jbo8oih9sCaYsQPbyHmuS2cEMD60drT6VRbAAP7sEM6jNl8zn/soVTV29KYCrfqlR7/AFhIAUPOVxvPi46u9tLY/s1UERc1nCBB5shJWTgO/Cj/be0V/7ENh37AWj9Yf+8hOifpa3Ldt5jIeo2SZS7cCjc4q1k3x3I1rSo5lRWb+WJfOymRlDIAgpFIdGHciBwxqa0W/7C0MvGwJuUuF4t81H5oEulQSZnRoCdI+MOVkItTDcmXuSNaYaw360uLVikbQ9IaTiyE3w5QbBSW1hO9WOpElZdv4FXH8pEyDYgAAAA==)"><img src="social/xhs-7.webp" alt="小红书：中戏毕业｜曾想大学转学的我，被女性温暖四年" loading="lazy" decoding="async" onload="this.classList.add('loaded')"></div></div>
                             <figcaption>
                                 <p class="social-title"><span class="lang-zh">中戏毕业｜曾想大学转学的我，被女性温暖四年</span><span class="lang-en">Graduating from the Central Academy of Drama: I once wanted to transfer, then women carried me through four years</span></p>
                                 <p class="social-meta"><span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.3 3 4.5 6.7 4.5c2.1 0 3.6 1.1 4.3 2.3h2c.7-1.2 2.2-2.3 4.3-2.3 3.7 0 5.8 3.8 4.3 7.3C19.5 16.4 12 21 12 21z"/></svg>341</span><span>2025.06</span></p>
                             </figcaption>
                         </figure>
                         <figure class="social-card" onclick="openShot(this)">
-                            <div class="phone"><div class="phone-screen"><img src="social/xhs-8.webp" alt="小红书：泰晤士河合法飙船！在伦敦🇬🇧成为了女船长" loading="lazy"></div></div>
+                            <div class="phone"><div class="phone-screen" style="background-image:url(data:image/webp;base64,UklGRoYBAABXRUJQVlA4IHoBAADwBwCdASoYADQAPu1mq06ppaOiKA1RMB2JYwDNTbPxgNIE0UFubnAsrQu8GjrHGBdeL31fR5673BC54uG0jXX65nuAvqIzogAA/tM+1YzRCbHZzJD3j7I8V0DgLFW+tj5KtG6Pc0wMwGOnh9J86zlydYbuGZnnCj/Q0JF0q3Rlbxj0lDab1zt4X5bjmj3EI/m20di3tqA505WpINXT4/HeBIhg0ZXMTTlrmzXqI0JCcwSED1SDekrGmiMw3oJIlw/rQTkGFfdeAv2yVQjA/AyafaR36lbYRNrqFg2fg2oXqIHb1wBzPmf93tlAtiXc2j5gnnlQTlAcmDkZu5yYB7xBHKGIMUIIpGfWo1AaXSBboLp9qyJbOwina1zlp8i0ZN4nmJOpPv83H2GjZ+QTzVDxSLr4FsxrJfurgZZ6GK62QJlw4MzFKxdgJAlbtC/tbtB6WaFdeiSjtit2fmU7x/rHx95W8uOZswx94TpqF2s840YAVVKkwjAAAAA=)"><img src="social/xhs-8.webp" alt="小红书：泰晤士河合法飙船！在伦敦🇬🇧成为了女船长" loading="lazy" decoding="async" onload="this.classList.add('loaded')"></div></div>
                             <figcaption>
                                 <p class="social-title"><span class="lang-zh">泰晤士河合法飙船！在伦敦🇬🇧成为了女船长</span><span class="lang-en">Legally speeding on the Thames: I became a boat captain in London</span></p>
                                 <p class="social-meta"><span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.3 3 4.5 6.7 4.5c2.1 0 3.6 1.1 4.3 2.3h2c.7-1.2 2.2-2.3 4.3-2.3 3.7 0 5.8 3.8 4.3 7.3C19.5 16.4 12 21 12 21z"/></svg>305</span><span>2026.03</span></p>
                             </figcaption>
                         </figure>
                         <figure class="social-card" onclick="openShot(this)">
-                            <div class="phone"><div class="phone-screen"><img src="social/xhs-9.webp" alt="小红书：🇬🇧Jaded London五条爆款神裤测评（小个子" loading="lazy"></div></div>
+                            <div class="phone"><div class="phone-screen" style="background-image:url(data:image/webp;base64,UklGRpIBAABXRUJQVlA4IIYBAADQBwCdASoYADQAPu1wrFCppqQiqBgMATAdiWUAyJpsCVA96pj/YrmbPm5eFUQs80Z0BVZ9B36mcZtgYXn8Oj06zI3VIgbTAAD4Wy0qO7sNySNTQMiMZ/c017cIg4c7iRcd2D/iH8Gz1aa31n4qkihdVuuyaIsjgpUyg0Y91hx3K07ACGpm9fzxF4bbI1WhPB011Lc2KQRAtBM4a/lAFmLOjsQsXp3fZ+9C6ZlLeIoorVKrDr7ppCKYibtu3+ysxwFpiS/1CWr8t3aVNxW1Hqzx7US7OQIB9R7XGXS2LgGTMfOxMyYZiyUXTtpW477d0RSKM8ysxwmh/yMU62F+elyt5DXcOnkvyzRRMtlZV6Ivblm51ZHa8Y73ldIOYjVH53J1KkVEttCfgjdiv7C7MLbpOGHr/pkoJ2Og8DvZxlVPuOvhfsvVW4+N8ldGPxLhMrWBX6CKiVY7MFF1G4U7xIlcHJZ0a+RsSUF0FzKhw4+4rDJh8EmEOXqRVYzlkLXItwbFBCu18AA=)"><img src="social/xhs-9.webp" alt="小红书：🇬🇧Jaded London五条爆款神裤测评（小个子" loading="lazy" decoding="async" onload="this.classList.add('loaded')"></div></div>
                             <figcaption>
                                 <p class="social-title"><span class="lang-zh">🇬🇧Jaded London五条爆款神裤测评（小个子</span><span class="lang-en">Jaded London: reviewing five viral trousers (petite fit)</span></p>
                                 <p class="social-meta"><span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.3 3 4.5 6.7 4.5c2.1 0 3.6 1.1 4.3 2.3h2c.7-1.2 2.2-2.3 4.3-2.3 3.7 0 5.8 3.8 4.3 7.3C19.5 16.4 12 21 12 21z"/></svg>251</span><span>2025.12</span></p>
                             </figcaption>
                         </figure>
                         <figure class="social-card" onclick="openShot(this)">
-                            <div class="phone"><div class="phone-screen"><img src="social/xhs-10.webp" alt="小红书：🇬🇧35度的今天，留子和一周前认识的闪婚了" loading="lazy"></div></div>
+                            <div class="phone"><div class="phone-screen" style="background-image:url(data:image/webp;base64,UklGRmABAABXRUJQVlA4IFQBAADwBwCdASoYADQAPu1apU2ppKMiM/ZtUTAdiWMAvk2wsZLbsEpZYnFVX5xrqS+f3I2RQKnnxqciv7T9gvVYGIEdtcR0oKHD39AA9TCx3f1kkwQAvJvim/E7lhhO/3SPg6Pad03G50UXqz3FRd1fmC1L6owwr3G/mgCh/sBYAomPPyJLRf+Qe3LHcLL8SHDV02jeRJc63Jg65MB3XsCkntm+RZBlpBPO6PT4a4qSTYUoGM7sbp2cyFNpQZK5QhJ08mN3iigukbDtiV5sAbOog5BfWnvl5rVDp+/DTheTnKoDHr3GEvLeKj7Z2Z7PPwp0Z1eStkM4PCl0gGyH/3Tv8L8is4Phcq2EKN1FbIyM4u3KHhru7A5UN3hn1usee2VRUcypHnRffMmCcnbxSgZSWLHSjq/GOWkMIt+nt57eP8JNMt+v0c70qJFW55FzPjyEAAWxiAAA)"><img src="social/xhs-10.webp" alt="小红书：🇬🇧35度的今天，留子和一周前认识的闪婚了" loading="lazy" decoding="async" onload="this.classList.add('loaded')"></div></div>
                             <figcaption>
                                 <p class="social-title"><span class="lang-zh">🇬🇧35度的今天，留子和一周前认识的闪婚了</span><span class="lang-en">35°C in London, so I &quot;married&quot; something I met a week ago (a £16 fan)</span></p>
                                 <p class="social-meta"><span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.3 3 4.5 6.7 4.5c2.1 0 3.6 1.1 4.3 2.3h2c.7-1.2 2.2-2.3 4.3-2.3 3.7 0 5.8 3.8 4.3 7.3C19.5 16.4 12 21 12 21z"/></svg>232</span><span>2026.06</span></p>
                             </figcaption>
                         </figure>
                         <figure class="social-card" onclick="openShot(this)">
-                            <div class="phone"><div class="phone-screen"><img src="social/xhs-11.webp" alt="小红书：女孩，如果你也在为情所困，墓地是个好学校" loading="lazy"></div></div>
+                            <div class="phone"><div class="phone-screen" style="background-image:url(data:image/webp;base64,UklGRnIBAABXRUJQVlA4IGYBAAAQCACdASoYADQAPu1krU+ppSQiKAwBMB2JQBlPt0ynkSDW2iNINbg1CAfh6mNCzfyp+7CTvL6AHFytYINvL8Db53tlGpoopkAAAP6f0pZVab8uLjWk8DePJg2mBEHth31/PC3+yUTcWSE/4Sa0MbMPsG3dj5egdfD9WWk0Pzv+UvY/QUfVKFGTBwpfQDv9XJb3SR0qS6XRsKXnmdNPphAH49M/g4dCsQ9z16J2UE9npBNvN8heZXix5Qf1XUvaUy5INKLRPyZ4L93TRNathVUPANF1CPjbLkxi/k5o9IGj0KN8ypaFmeZEWj3cctFbAY7rkqyJtFRI43v/SfKKpazPdQTu6UKepVRENjtl19xPPqChS2Jcnv1uS7fVJfuS9wbXkjA7Mm8eTQROgXlIG4nSZ0J8tosdeZPHuOyp2aXNICswh2EF+N3dONq74ydLq2FwsCCuxgrBMFawMolJeGRS8BKsAAAA)"><img src="social/xhs-11.webp" alt="小红书：女孩，如果你也在为情所困，墓地是个好学校" loading="lazy" decoding="async" onload="this.classList.add('loaded')"></div></div>
                             <figcaption>
                                 <p class="social-title"><span class="lang-zh">女孩，如果你也在为情所困，墓地是个好学校</span><span class="lang-en">If you&#x27;re heartbroken too, a cemetery makes a good classroom</span></p>
                                 <p class="social-meta"><span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.3 3 4.5 6.7 4.5c2.1 0 3.6 1.1 4.3 2.3h2c.7-1.2 2.2-2.3 4.3-2.3 3.7 0 5.8 3.8 4.3 7.3C19.5 16.4 12 21 12 21z"/></svg>213</span><span>2026.05</span></p>
                             </figcaption>
                         </figure>
                         <figure class="social-card" onclick="openShot(this)">
-                            <div class="phone"><div class="phone-screen"><img src="social/xhs-12.webp" alt="小红书：可我觉得熬夜根本不是我们的错啊（很多时候" loading="lazy"></div></div>
+                            <div class="phone"><div class="phone-screen" style="background-image:url(data:image/webp;base64,UklGRp4BAABXRUJQVlA4IJIBAADQBwCdASoYADQAPu1urVCppqQiqBgMATAdiWYAvKd2NH2W8wxhyMhVYGKRWEKGHkPiBetg4H2xeMCWVg/Np3A6tJ6gRrbrmAD94RkuBlF+4pCMXRR8o4wre1oHrZHSJlZXKmb8SXx1Lm2pOLGikqLwxeOpJTgPFqmqEuSSouaYbGQ5/+a+uIHk3r++qlFnT+/s/+IhNP/uTsdNngFuhll86g9XcVfsEd0oksrG95eE4np9yPs41b3qS4YhrNwTcW1Bvj+aoIjqBCUF3QiOKFQfGybTYo9LBviODvH3mhUHYjR7flbA80nHuIOOz2p3Eke8LcNc7o/zzUjIzIsNGYcbK/cEWNVZPwBEpFLogaGvaO5Jp4fDBPW64iq17LVtA3/Bl5BqmGo0oA/pj6lUsBFnUXDhRwA/mB8DdZl9OWizsgeftjeGLs5YeGIr5ZT5nFy3HopBOgHkBQhmUk4o5ZIWAS0zYe3JgdM0tR2MIhwbS9IhAaXFSuOnVj7YzbmrmR1RRu2nZ37xcr9SVr4xy66gAAA=)"><img src="social/xhs-12.webp" alt="小红书：可我觉得熬夜根本不是我们的错啊（很多时候" loading="lazy" decoding="async" onload="this.classList.add('loaded')"></div></div>
                             <figcaption>
                                 <p class="social-title"><span class="lang-zh">可我觉得熬夜根本不是我们的错啊（很多时候</span><span class="lang-en">Staying up late often isn&#x27;t really our fault</span></p>
                                 <p class="social-meta"><span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.3 3 4.5 6.7 4.5c2.1 0 3.6 1.1 4.3 2.3h2c.7-1.2 2.2-2.3 4.3-2.3 3.7 0 5.8 3.8 4.3 7.3C19.5 16.4 12 21 12 21z"/></svg>209</span><span>2026.03</span></p>
@@ -1273,35 +1277,35 @@ body::before { content:''; position:fixed; inset:0;
             <div id="social-xhs-alt" class="social-panel">
                 <div class="social-grid">
                         <figure class="social-card" onclick="openShot(this)">
-                            <div class="phone"><div class="phone-screen"><img src="social/wd-1.webp" alt="小红书：🇬🇧一周收到700个like后，惨败的dating记录" loading="lazy"></div></div>
+                            <div class="phone"><div class="phone-screen" style="background-image:url(data:image/webp;base64,UklGRjoBAABXRUJQVlA4IC4BAABwCACdASoYADQAPu1iqU2ppaQiLAzJMB2JZQDL5AolzHcyxPrHxZ+/EmQwyDj47gvuZU1KDvTwLKn1vykg6bhVdZvrB8/jMW+RhsAAAM4/byLi8MWbaslxVwsGkLLxUKngPY0nhEWEjvbYBhjz8pvb3EUOozn5ztJ3SHDrfUtdCjVE3qh5eOiRS4qew7BjeGaL3X76eI9b5bTagOv3+7MylM41k6t6AiF9dfeaObFnheWxBzr0aSeS8/e4jA1L1GDs8YHMfKo3gKVBJPMcpqbmDGa6C5yswxYrMTFgSXP7m0cC4/am+sBs/RGCqPi1ZWnxuKvUo8jDn0aM420qVKM2L7aezx0BRDWQsX7uDSOzNOsc2TfMHBlyAaV6T+2XG7Aag2KVdRhj9lrcVYgAAA==)"><img src="social/wd-1.webp" alt="小红书：🇬🇧一周收到700个like后，惨败的dating记录" loading="lazy" decoding="async" onload="this.classList.add('loaded')"></div></div>
                             <figcaption>
                                 <p class="social-title"><span class="lang-zh">🇬🇧一周收到700个like后，惨败的dating记录</span><span class="lang-en">700 likes in a week, then a dating disaster</span></p>
                                 <p class="social-meta"><span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.3 3 4.5 6.7 4.5c2.1 0 3.6 1.1 4.3 2.3h2c.7-1.2 2.2-2.3 4.3-2.3 3.7 0 5.8 3.8 4.3 7.3C19.5 16.4 12 21 12 21z"/></svg>529</span><span>2026.08</span></p>
                             </figcaption>
                         </figure>
                         <figure class="social-card" onclick="openShot(this)">
-                            <div class="phone"><div class="phone-screen"><img src="social/wd-2.webp" alt="小红书：🇬🇧 初高中时，我总是为穿短裤感到羞耻" loading="lazy"></div></div>
+                            <div class="phone"><div class="phone-screen" style="background-image:url(data:image/webp;base64,UklGRhwBAABXRUJQVlA4IBABAAAwBwCdASoYADQAPu1ir1AppSSirBqpmTAdiWcAAKr/8Sjzkt5ABJPOBEpVbl0kSVOE0cUtdNjBm56Mfqth8fiww4AA/t+wA9eFJmQEe4K1n+DKc8w9RgC00u1qrXXeVbLT2x71D3lMVWQeALfYtvmrzm+mkjHri+KJyKBNySSZ+mYOx94+xYsEMifuVbKRs8IqsttWgKLqjCCsunNXwv5nIDSXTQCTOrLVz4xFB6wD9ZqkPeUJMXFIN+yaWBoW8U1gmdJ6jgB+qexGhcByVmChj2/w9SR4o/4uvHPF7W6eTYHl1qaiNCumas3K+lEhjNgq7CAmdouJ807OgRHa3+u/xdjVmHvzAisaR4T3MqGAAA==)"><img src="social/wd-2.webp" alt="小红书：🇬🇧 初高中时，我总是为穿短裤感到羞耻" loading="lazy" decoding="async" onload="this.classList.add('loaded')"></div></div>
                             <figcaption>
                                 <p class="social-title"><span class="lang-zh">🇬🇧 初高中时，我总是为穿短裤感到羞耻</span><span class="lang-en">In secondary school, I was always ashamed to wear shorts</span></p>
                                 <p class="social-meta"><span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.3 3 4.5 6.7 4.5c2.1 0 3.6 1.1 4.3 2.3h2c.7-1.2 2.2-2.3 4.3-2.3 3.7 0 5.8 3.8 4.3 7.3C19.5 16.4 12 21 12 21z"/></svg>402</span><span>2026.07</span></p>
                             </figcaption>
                         </figure>
                         <figure class="social-card" onclick="openShot(this)">
-                            <div class="phone"><div class="phone-screen"><img src="social/wd-3.webp" alt="小红书：🇬🇧 中国女人在东伦敦印巴社区的一年" loading="lazy"></div></div>
+                            <div class="phone"><div class="phone-screen" style="background-image:url(data:image/webp;base64,UklGRiABAABXRUJQVlA4IBQBAADwBgCdASoYADQAPu1kqVCppSOirBVcyTAdiWcAy+Mz+Gt/NbCktalkB2qkfLhNNk2XPbRT7IoIRhkwbwY8iewAAP6vtbSmIUHKtn/AWISRmc+wxi6r/MgpvNM9OF9VlRqiHBNd/7ThwoS/UpIuk9qYfl65cVy5c19uOlN7MpanCYdFx0R3FMoTu0p/WPWgs3s0/VCOon0v4sCkZBric65ZwbIahO/IiXxoVyRff1eog92tGrSPN/hgqQQntCKUDAf33f4+7D8J1BB3ZWjoPjImp2b9euSV5/G2WvhjHbpD8Ln4Dy2IhbT4SgHrdeSXMxFeMpPSRMfqmjbmxQURi56FmxRbFj16jiR0Rc+vxAGpWFbAAAA=)"><img src="social/wd-3.webp" alt="小红书：🇬🇧 中国女人在东伦敦印巴社区的一年" loading="lazy" decoding="async" onload="this.classList.add('loaded')"></div></div>
                             <figcaption>
                                 <p class="social-title"><span class="lang-zh">🇬🇧 中国女人在东伦敦印巴社区的一年</span><span class="lang-en">A year as a Chinese woman in East London&#x27;s South Asian community</span></p>
                                 <p class="social-meta"><span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.3 3 4.5 6.7 4.5c2.1 0 3.6 1.1 4.3 2.3h2c.7-1.2 2.2-2.3 4.3-2.3 3.7 0 5.8 3.8 4.3 7.3C19.5 16.4 12 21 12 21z"/></svg>352</span><span>2026.08</span></p>
                             </figcaption>
                         </figure>
                         <figure class="social-card" onclick="openShot(this)">
-                            <div class="phone"><div class="phone-screen"><img src="social/wd-4.webp" alt="小红书：🇬🇧 一天坐了10次伊丽莎白线的神经病" loading="lazy"></div></div>
+                            <div class="phone"><div class="phone-screen" style="background-image:url(data:image/webp;base64,UklGRl4BAABXRUJQVlA4IFIBAABwBwCdASoYADQAPu1krFCppSQiqBgNUTAdiUAYHb/9THKoYpYooZWSMwa/Upjw5uD0atpDmFvYoXUqxBvdEYGMz+wmAAD+0Y289Ve8fCA7znaehwSKNkHu/+VTW+3+3CGZ+fT8lhC/vrx6w9Rk1ipDJUZ6U8lYjSaBV7soFH+pW3+JZFdFQmbLSedGrrb56PDwv4X56nUiZat6uJlEz1TiRUelzca5mFy8xKUmHRQIKWtSgKQp6aH6PGxNx30uOABScjjVXuZfOvitQKCCTeOzFOUfkmjSWxA8flmTWMbKApA1Ii+9RXZiWhROaUvxMkR4kn2byymR+DCfEOnLbzwmnA+N+PaWpoZJ87CyqQ9DNREEB6IkyCaLplt2H+gIsQ/EeuL/TteqZdfFh4/mBGEXClIsA3aiPvUEniYfI3z3NiehvDwZjXVhPghrZbYt2WAAAA==)"><img src="social/wd-4.webp" alt="小红书：🇬🇧 一天坐了10次伊丽莎白线的神经病" loading="lazy" decoding="async" onload="this.classList.add('loaded')"></div></div>
                             <figcaption>
                                 <p class="social-title"><span class="lang-zh">🇬🇧 一天坐了10次伊丽莎白线的神经病</span><span class="lang-en">The weirdo who rode the Elizabeth line 10 times in one day</span></p>
                                 <p class="social-meta"><span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.3 3 4.5 6.7 4.5c2.1 0 3.6 1.1 4.3 2.3h2c.7-1.2 2.2-2.3 4.3-2.3 3.7 0 5.8 3.8 4.3 7.3C19.5 16.4 12 21 12 21z"/></svg>261</span><span>2026.07</span></p>
                             </figcaption>
                         </figure>
                         <figure class="social-card" onclick="openShot(this)">
-                            <div class="phone"><div class="phone-screen"><img src="social/wd-5.webp" alt="小红书：🇬🇧 psw租房之我是不可接触之贱民" loading="lazy"></div></div>
+                            <div class="phone"><div class="phone-screen" style="background-image:url(data:image/webp;base64,UklGRn4BAABXRUJQVlA4IHIBAACQCACdASoYADQAPu1eqU6ppKOiLBqsyTAdiWMAyNgK7YDXCMUhisKTx/Dj2fFhtPx3brj8jO5+wHJifBl+aFrVsjMqf/9k1ctn6AXgAADiVurSmg1Vdx0YLevxGEK6h7+a/kAYnIDJdYXRV6p/ut7xPbXsON4B4+ztg/9n1e64u2Gvcy9b6doOaSE7kv/whfHA6uHW0avU62CPOOdZPlRp0eteUH/qVcDLrhW8Mos6v9kC7cA4f+asPrauYwQBaJsDtftxpRWsznj4ZP4dvBSXQp0gmJ7SZCbfuatqmdkCFeRsylwa7DWhHHMkazOmgtRoo6vH7RJZlWMUiFCC8QgYZHxJ82SdLhWCF1Kpe97vMwTQUnqSiAMBYYteFxUyMB/RWGo2AQjDYHYY/OduyvHgkqFtpoxvYu3prndDtJluwv16BgO+YsbOcSpFEvBabUw8ycMcVA28QI9i7+N3GJ6I8I/Y+ikzkAcoQ443aiUYgAAA)"><img src="social/wd-5.webp" alt="小红书：🇬🇧 psw租房之我是不可接触之贱民" loading="lazy" decoding="async" onload="this.classList.add('loaded')"></div></div>
                             <figcaption>
                                 <p class="social-title"><span class="lang-zh">🇬🇧 psw租房之我是不可接触之贱民</span><span class="lang-en">Renting on a post-study work visa: treated like an outcast</span></p>
                                 <p class="social-meta"><span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.3 3 4.5 6.7 4.5c2.1 0 3.6 1.1 4.3 2.3h2c.7-1.2 2.2-2.3 4.3-2.3 3.7 0 5.8 3.8 4.3 7.3C19.5 16.4 12 21 12 21z"/></svg>223</span><span>2026.08</span></p>
@@ -2045,10 +2049,18 @@ document.addEventListener('DOMContentLoaded', function() {
         function openShot(card) {
             const img = card.querySelector('img');
             const big = document.getElementById('social-modal-img');
+            big.parentElement.style.backgroundImage = img.parentElement.style.backgroundImage;
             big.src = img.src;
             big.alt = img.alt;
             openModal('social');
         }
+
+        // 页面加载完后，提前下载另外两个标签页的截图，切换时不用再等
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.querySelectorAll('.social-panel img[loading="lazy"]').forEach(img => { img.loading = 'eager'; });
+            }, 1500);
+        });
 
         document.addEventListener('keydown', function(e) {
             const m = document.getElementById('social-modal');
